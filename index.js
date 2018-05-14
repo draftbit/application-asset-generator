@@ -2,12 +2,17 @@
 
 const gm = require("gm");
 const path = require("path");
+const request = require("request");
 
 const argv = require("yargs").argv;
+const outputDir = argv.outputDir || __dirname;
 
 function main() {
-  if (!argv.imagePath) {
-    console.error("Image path is required");
+  if (
+    (!argv.imagePath && !argv.imageUrl) ||
+    (argv.imagePath && argv.imageUrl)
+  ) {
+    console.error("Image path or url is required");
     process.exit(1);
   }
 
@@ -23,9 +28,14 @@ function main() {
     process.exit(1);
   }
 
-  const outputDir = argv.outputDir || __dirname;
+  let image;
+  if (argv.imageUrl) {
+    image = gm(request(argv.imageUrl));
+  } else {
+    image = gm(argv.imagePath);
+  }
 
-  gm(argv.imagePath)
+  image
     .resize(750, 750)
     .background(argv.color)
     .flatten()
@@ -35,7 +45,7 @@ function main() {
       if (err) console.error(err);
     });
 
-  gm(argv.imagePath)
+  image
     .resize(350, 350)
     .background(argv.color)
     .flatten()
