@@ -1,9 +1,14 @@
 # Application Asset Generator
 
+A tool to quickly generate mobile-ready assets.
+
+Supports [just about any format you can think of](http://www.graphicsmagick.org/formats.html).
+
 ## Requirements
 
 * imagemagick (`brew install imagemagick`)
 * graphicsmagick (`brew install graphicsmagick`)
+* If using Illustrator files (.ai or .eps), ghostscript (`brew install ghostscript`)
 
 ## Getting Started
 
