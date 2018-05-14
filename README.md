@@ -8,7 +8,7 @@
 ## Getting Started
 
 * Run `yarn` or `npm install`
-* `yarn start --imagePath= --color= [--outputDir=]
+* `yarn start --imagePath= --color= [--outputDir=]`
 
 ## Arguments
 
