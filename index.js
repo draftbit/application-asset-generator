@@ -2,12 +2,12 @@
 
 const gm = require("gm");
 const path = require("path");
-const request = require("request");
+const fetch = require("node-fetch");
 
 const argv = require("yargs").argv;
 const outputDir = argv.outputDir || __dirname;
 
-function main() {
+async function main() {
   if (
     (!argv.imagePath && !argv.imageUrl) ||
     (argv.imagePath && argv.imageUrl)
@@ -30,12 +30,13 @@ function main() {
 
   let image;
   if (argv.imageUrl) {
-    image = gm(request(argv.imageUrl));
+    const downloadedImage = await fetch(argv.imageUrl);
+    image = await downloadedImage.buffer();
   } else {
-    image = gm(argv.imagePath);
+    image = argv.imagePath;
   }
 
-  image
+  gm(image)
     .resize(750, 750)
     .background(argv.color)
     .flatten()
@@ -45,7 +46,7 @@ function main() {
       if (err) console.error(err);
     });
 
-  image
+  gm(image)
     .resize(350, 350)
     .background(argv.color)
     .flatten()
