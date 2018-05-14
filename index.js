@@ -30,8 +30,7 @@ async function main() {
 
   let image;
   if (argv.imageUrl) {
-    const downloadedImage = await fetch(argv.imageUrl);
-    image = await downloadedImage.buffer();
+    image = await fetch(argv.imageUrl).then(res => res.buffer());
   } else {
     image = argv.imagePath;
   }
