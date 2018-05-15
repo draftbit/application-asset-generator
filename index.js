@@ -7,6 +7,8 @@ const fetch = require("node-fetch");
 const argv = require("yargs").argv;
 const outputDir = argv.outputDir || __dirname;
 
+const { processIcon, processSplash } = require("./src/imageProcessor");
+
 async function main() {
   if (
     (!argv.imagePath && !argv.imageUrl) ||
@@ -35,15 +37,7 @@ async function main() {
     image = argv.imagePath;
   }
 
-  gm(image)
-    .resize(750, 750)
-    .background(argv.color)
-    .flatten()
-    .gravity("Center")
-    .extent(1024, 1024)
-    .write(path.join(outputDir, "icon.png"), function(err) {
-      if (err) console.error(err);
-    });
+  await processIcon(image, argv.color, path.join(outputDir, "icon.png"));
 
   if (argv.backgroundImagePath) {
     gm()
@@ -57,15 +51,7 @@ async function main() {
         if (err) console.error(err);
       });
   } else {
-    gm(image)
-      .resize(350, 350)
-      .background(argv.color)
-      .flatten()
-      .gravity("Center")
-      .extent(1242, 2436)
-      .write(path.join(outputDir, "splash.png"), function(err) {
-        if (err) console.error(err);
-      });
+    await processSplash(image, argv.color, path.join(outputDir, "splash.png"));
   }
 }
 
