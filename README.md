@@ -10,8 +10,8 @@ A tool to quickly generate mobile app assets. Supports [just about any format yo
 ## Getting Started
 
 * Run `yarn` or `npm install`
-* `yarn start` to run server
-* `yarn process --imagePath= --color= [--outputDir=]` OR `yarn start --imageUrl= --color= [--outputDir=]`
+* To run server: `yarn start`
+* To process images from command line: `yarn process --imagePath= --color= [--outputDir=]` OR `yarn process --imageUrl= --color= [--outputDir=]`
 
 ## API Usage
 
