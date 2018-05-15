@@ -1,6 +1,5 @@
 const Fs = require("fs");
 const Fetch = require("node-fetch");
-const Path = require("path");
 const Bluebird = require("bluebird");
 
 const { processSplash } = require("../src/imageProcessor");

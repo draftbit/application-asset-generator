@@ -1,4 +1,3 @@
-const Fs = require("fs");
 const Fetch = require("node-fetch");
 
 const { processIcon } = require("../src/imageProcessor");
@@ -8,7 +7,11 @@ module.exports = async (request, h) => {
 
   const logo = await Fetch(logoUrl).then(res => res.buffer());
 
-  await processIcon({ logo, color, outputFile: "./tmp.png" });
+  try {
+    await processIcon({ logo, color, outputFile: "./tmp.png" });
+  } catch (err) {
+    console.error(err);
+  }
 
   return h.file("./tmp.png");
 };
