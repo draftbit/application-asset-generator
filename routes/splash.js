@@ -40,7 +40,10 @@ module.exports = async (request, h) => {
   });
 
   Fs.unlinkSync(TEMP_LOGO_FILENAME);
-  Fs.unlinkSync(TEMP_BACKGROUND_FILENAME);
+
+  if (backgroundUrl) {
+    Fs.unlinkSync(TEMP_BACKGROUND_FILENAME);
+  }
 
   return h.file("./tmp.png");
 };
