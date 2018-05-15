@@ -4,8 +4,8 @@ A tool to quickly generate mobile app assets. Supports [just about any format yo
 
 ## Requirements
 
-* graphicsmagick (`brew install graphicsmagick`)
-* If using Illustrator files (.ai or .eps), ghostscript (`brew install ghostscript`)
+* GraphicsMagick (`brew install graphicsmagick`, `port install GraphicsMagick`)
+* If using Illustrator files (.ai or .eps), ghostscript (`brew install ghostscript`, `port install ghostscript`)
 
 ## Getting Started
 
