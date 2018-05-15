@@ -48,7 +48,7 @@ async function main() {
       path: "/splash",
       config: {
         validate: {
-          query: {
+          query: Joi.object({
             logoUrl: Joi.string()
               .uri()
               .required(),
@@ -61,7 +61,7 @@ async function main() {
                 .length(3)
                 .hex()
             ])
-          }
+          }).min(2)
         }
       },
       handler: require("./routes/splash")
