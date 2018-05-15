@@ -23,36 +23,30 @@ async function main() {
     process.exit(1);
   }
 
-  if (argv.color.length !== 7 || argv.color[0] !== "#") {
-    console.error(
-      "Invalid color format. Color should be in hex code format with leading '#'."
-    );
+  if (argv.color.length !== 3 && argv.color.length !== 6) {
+    console.error("Invalid color format. Color should be in hex code format.");
     process.exit(1);
   }
 
-  let image;
+  let logo;
   if (argv.imageUrl) {
-    image = await fetch(argv.imageUrl).then(res => res.buffer());
+    logo = await fetch(argv.imageUrl).then(res => res.buffer());
   } else {
-    image = argv.imagePath;
+    logo = argv.imagePath;
   }
 
-  await processIcon(image, argv.color, path.join(outputDir, "icon.png"));
+  await processIcon({
+    logo,
+    color: argv.color,
+    outputFile: path.join(outputDir, "icon.png")
+  });
 
-  if (argv.backgroundImagePath) {
-    gm()
-      .in("-geometry", "1242x2436")
-      .in(argv.backgroundImagePath)
-      .in("-geometry", "350x350")
-      .in("-page", "+471+1038")
-      .in(image)
-      .flatten()
-      .write(path.join(outputDir, "splash.png"), function(err) {
-        if (err) console.error(err);
-      });
-  } else {
-    await processSplash(image, argv.color, path.join(outputDir, "splash.png"));
-  }
+  await processSplash({
+    logo,
+    backgroundImage: argv.backgroundImagePath,
+    color: argv.color,
+    outputFile: path.join(outputDir, "splash.png")
+  });
 }
 
 main();

@@ -25,7 +25,7 @@ async function main() {
       config: {
         validate: {
           query: {
-            imageUrl: Joi.string()
+            logoUrl: Joi.string()
               .uri()
               .required(),
             color: Joi.alternatives().try([
@@ -49,18 +49,17 @@ async function main() {
       config: {
         validate: {
           query: {
-            imageUrl: Joi.string()
+            logoUrl: Joi.string()
               .uri()
               .required(),
+            backgroundUrl: Joi.string().uri(),
             color: Joi.alternatives().try([
               Joi.string()
                 .length(6)
-                .hex()
-                .required(),
+                .hex(),
               Joi.string()
                 .length(3)
                 .hex()
-                .required()
             ])
           }
         }
