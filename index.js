@@ -45,15 +45,28 @@ async function main() {
       if (err) console.error(err);
     });
 
-  gm(image)
-    .resize(350, 350)
-    .background(argv.color)
-    .flatten()
-    .gravity("Center")
-    .extent(1242, 2436)
-    .write(path.join(outputDir, "splash.png"), function(err) {
-      if (err) console.error(err);
-    });
+  if (argv.backgroundImagePath) {
+    gm()
+      .in("-geometry", "1242x2436")
+      .in(argv.backgroundImagePath)
+      .in("-geometry", "350x350")
+      .in("-page", "+471+1038")
+      .in(image)
+      .flatten()
+      .write(path.join(outputDir, "splash.png"), function(err) {
+        if (err) console.error(err);
+      });
+  } else {
+    gm(image)
+      .resize(350, 350)
+      .background(argv.color)
+      .flatten()
+      .gravity("Center")
+      .extent(1242, 2436)
+      .write(path.join(outputDir, "splash.png"), function(err) {
+        if (err) console.error(err);
+      });
+  }
 }
 
 main();

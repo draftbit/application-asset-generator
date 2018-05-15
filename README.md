@@ -15,6 +15,7 @@ A tool to quickly generate mobile app assets. Supports [just about any format yo
 ## Arguments
 
 * **imagePath** The path of the input logo image to be used for asset generation. Either `imagePath` or `imageUrl` is required.
-* **imageUrl** The url of the input logo image to be used for asset generation. Either `imagePath` or `imageUrl` is required.
+* **imageUrl** The URL of the input logo image to be used for asset generation. Either `imagePath` or `imageUrl` is required.
 * **color** The color to use as the asset background color.
+* (Optional) **backgroundImagePath** The path of the image to use as the background of the splash screen.
 * (Optional) **outputDir** The directory to output the assets. If not specified, the current directory will be used.
