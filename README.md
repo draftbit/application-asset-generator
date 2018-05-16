@@ -2,6 +2,8 @@
 
 A tool to quickly generate mobile app assets. Supports [just about any format you can think of](http://www.graphicsmagick.org/formats.html).
 
+[![npm version](https://badge.fury.io/js/%40draftbit%2Fapplication-asset-generator.svg)](https://badge.fury.io/js/%40draftbit%2Fapplication-asset-generator)
+
 Library is located within `/lib`. Example usage within an API is located within `/api`, and also hosted at https://app-asset-generator-api.draftbit.com.
 
 ## Requirements
