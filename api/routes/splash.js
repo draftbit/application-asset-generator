@@ -15,9 +15,11 @@ module.exports = async (request, h) => {
       autoClose: true
     });
 
-    await Bluebird.fromCallback(callback =>
-      res.body.pipe(dest).on("close", callback)
-    );
+    await new Promise(resolve => {
+      res.body.pipe(dest).on("close", () => {
+        resolve();
+      });
+    });
   });
 
   if (backgroundUrl) {
@@ -26,9 +28,11 @@ module.exports = async (request, h) => {
         autoClose: true
       });
 
-      await Bluebird.fromCallback(callback =>
-        res.body.pipe(dest).on("close", callback)
-      );
+      await new Promise(resolve => {
+        res.body.pipe(dest).on("close", () => {
+          resolve();
+        });
+      });
     });
   }
 
