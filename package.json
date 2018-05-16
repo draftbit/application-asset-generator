@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node api/server.js"
+    "start": "node api/server.js",
+    "process": "node client/index.js"
   },
   "license": "MIT",
   "dependencies": {

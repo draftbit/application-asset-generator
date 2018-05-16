@@ -2,6 +2,8 @@
 
 A tool to quickly generate mobile app assets. Supports [just about any format you can think of](http://www.graphicsmagick.org/formats.html).
 
+Library is located within `/lib`. Example usage within an API is located within `/api`, and also hosted at https://app-asset-generator-api.draftbit.com.
+
 ## Requirements
 
 * GraphicsMagick (`brew install graphicsmagick`, `port install GraphicsMagick`)
@@ -19,11 +21,13 @@ A tool to quickly generate mobile app assets. Supports [just about any format yo
   * Query Parameters:
     * `logoUrl` - The URL of the logo to use for the app icon
     * `color` - The hex value of the background color of the app icon
+  * Example: https://app-asset-generator-api.draftbit.com/icon?logoUrl=https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/1000px-F_icon.svg.png&color=fff
 * `/splash` - Generates a splash screen with the logo centered over a background color or image
   * Query Parameters:
     * `logoUrl` - The URL of the logo to use for the splash screen
     * `color` - The hex value of the background color of the splash screen. Either `color` or `backgroundUrl` is required
     * `backgroundUrl` - The URL of the image to use for the background of the splash screen. Either `color` or `backgroundUrl` is required
+  * Example: https://app-asset-generator-api.draftbit.com/splash?logoUrl=https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/1000px-F_icon.svg.png&color=fff
 
 ## `yarn process` Arguments
 
