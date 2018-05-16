@@ -1,0 +1,11 @@
+{
+  "name": "application-asset-generator",
+  "version": "1.0.0",
+  "author": "Donald Hruska <donaldhruska@gmail.com>",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {
+    "gm": "^1.23.1",
+    "node-fetch": "^2.1.2"
+  }
+}

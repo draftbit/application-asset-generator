@@ -2,7 +2,7 @@ const Fs = require("fs");
 const Fetch = require("node-fetch");
 const Bluebird = require("bluebird");
 
-const { processSplash } = require("../src/imageProcessor");
+const { processSplash } = require("../../client/imageProcessor");
 
 const TEMP_LOGO_FILENAME = "tmp_logo.png";
 const TEMP_BACKGROUND_FILENAME = "tmp_background.png";

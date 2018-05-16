@@ -1,6 +1,6 @@
 const Fetch = require("node-fetch");
 
-const { processIcon } = require("../src/imageProcessor");
+const { processIcon } = require("../../client/imageProcessor");
 
 module.exports = async (request, h) => {
   const { logoUrl, color } = request.query;
