@@ -1,8 +1,12 @@
 {
-  "name": "application-asset-generator",
+  "name": "@draftbit/application-asset-generator",
   "version": "1.0.0",
+  "description": "A tool to quickly generate mobile app assets",
+  "main": "index.js",
+  "source": "index.js",
   "author": "Donald Hruska <donaldhruska@gmail.com>",
   "license": "MIT",
+  "respository": "preposterous/application-asset-generator.git",
   "scripts": {},
   "dependencies": {
     "gm": "^1.23.1",
