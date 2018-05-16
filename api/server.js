@@ -2,7 +2,6 @@
 
 require("dotenv").load();
 
-const fs = require("fs");
 const Hapi = require("hapi");
 const Joi = require("joi");
 

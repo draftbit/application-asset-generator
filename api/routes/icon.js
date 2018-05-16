@@ -1,17 +1,11 @@
-const Fetch = require("node-fetch");
+"use strict";
 
-const { processIcon } = require("../../client/imageProcessor");
+const generateAssets = require("../../lib");
 
 module.exports = async (request, h) => {
   const { logoUrl, color } = request.query;
 
-  const logo = await Fetch(logoUrl).then(res => res.buffer());
+  await generateAssets({ logoImageUrl: logoUrl, color, outputDir: "./" });
 
-  try {
-    await processIcon({ logo, color, outputFile: "./tmp.png" });
-  } catch (err) {
-    console.error(err);
-  }
-
-  return h.file("./tmp.png");
+  return h.file("./icon.png");
 };
